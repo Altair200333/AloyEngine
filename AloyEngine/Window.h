@@ -53,7 +53,7 @@ class Window final : public OnUpdateSubscriber
 
 	static Window& instance()
 	{
-		static Window windowInstance;
+		static Window windowInstance{};
 		return windowInstance;
 	}
 public:
@@ -99,7 +99,6 @@ public:
 		glfwTerminate();
 	}
 private:
-
 
 	void close() const
 	{
