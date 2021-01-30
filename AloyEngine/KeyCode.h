@@ -35,6 +35,16 @@ namespace KeyCode
 		LCtrl = GLFW_KEY_LEFT_CONTROL,
 		RCtrl = GLFW_KEY_RIGHT_CONTROL,
 
-		Space = GLFW_KEY_SPACE
+		Space = GLFW_KEY_SPACE,
+
+		F1 = GLFW_KEY_F1,
+		F2 = GLFW_KEY_F2,
+		F3 = GLFW_KEY_F3,
+		F4 = GLFW_KEY_F4,
+		F5 = GLFW_KEY_F5,
+		F6 = GLFW_KEY_F6,
+		F7 = GLFW_KEY_F7,
+		F8 = GLFW_KEY_F8,
+		F9 = GLFW_KEY_F9,
 	};
 };
