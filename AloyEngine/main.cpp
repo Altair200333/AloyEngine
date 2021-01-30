@@ -1,11 +1,11 @@
 #include <iostream>
 #include "Engine.h"
-#include "AloyTestApp.h"
+#include "AloyDemoApp.h"
 
 int main()
 {
 	Engine::init("Aloy engine");
-	AloyTestApp app;
+	AloyDemoApp app;
 	Engine::run();
 
 	return 0;

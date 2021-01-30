@@ -159,8 +159,9 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AloyTestApp.h" />
+    <ClInclude Include="AloyDemoApp.h" />
     <ClInclude Include="Application.h" />
+    <ClInclude Include="CursorModes.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Event.h" />
     <ClInclude Include="EventDispatcher.h" />

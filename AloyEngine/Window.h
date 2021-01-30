@@ -1,6 +1,8 @@
 #pragma once
 #include <functional>
 #include <glad/glad.h>
+
+#include "CursorModes.h"
 #include "GLFW/glfw3.h"
 #include "WindowProps.h"
 #include "Logger.h"
@@ -66,13 +68,7 @@ public:
 	{
 		return instance().running;
 	}
-	void onUpdate() override
-	{
-		running = !glfwWindowShouldClose(window);
-
-		glfwSwapBuffers(window);
-		glfwPollEvents();
-	}
+	
 	static void clear()
 	{
 		glClearColor(0.2f, 0.2f, 0.22f, 1.0f);
@@ -86,10 +82,23 @@ public:
 	{
 		instance().mouseCallback = callback;
 	}
-
+	static void setCursorMode(CursorMode::Cursor mode)
+	{
+		glfwSetInputMode(instance().getGLFWwindow(), GLFW_CURSOR, mode);
+	}
+	
+	//return glfwWindow for needs of input
 	static GLFWwindow* getGLFWwindow()
 	{
 		return instance().window;
+	}
+	
+	void onUpdate() override
+	{
+		running = !glfwWindowShouldClose(window);
+
+		glfwSwapBuffers(window);
+		glfwPollEvents();
 	}
 	~Window() override
 	{
@@ -110,7 +119,7 @@ private:
 
 	static void windowKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 	{
-		instance().keyCallback(scancode, action, mods);
+		instance().keyCallback(key, scancode, action);
 	}
 	static void windowMouseCallback(GLFWwindow* window, double xPos, double yPos)
 	{

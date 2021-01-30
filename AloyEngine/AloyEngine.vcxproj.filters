@@ -83,8 +83,11 @@
     <ClInclude Include="Application.h">
       <Filter>Application</Filter>
     </ClInclude>
-    <ClInclude Include="AloyTestApp.h">
+    <ClInclude Include="AloyDemoApp.h">
       <Filter>Application</Filter>
+    </ClInclude>
+    <ClInclude Include="CursorModes.h">
+      <Filter>Engine\Window</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
