@@ -5,6 +5,7 @@
 #include "imgui/imgui_impl_opengl3.h"
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_glfw.h"
+#include "ImGuiEvent.h"
 
 class ImGuiLayer final : public RenderLayer
 {
@@ -26,27 +27,12 @@ class ImGuiLayer final : public RenderLayer
 		ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 	}
 
-	void setDisplaySize(ImGuiIO& io) const
-	{
-		int width, height;
-		glfwGetWindowSize(Window::getGLFWwindow(), &width, &height);
-		io.DisplaySize = ImVec2(width, height);
-	}
-
-	static void updateViewports(ImGuiIO& io)
-	{
-	}
-
 public:
-	bool enabled = true;
-
-	void setEnabled(bool status)
-	{
-		enabled = status;
-	}
-
+	
 	explicit ImGuiLayer()
 	{
+		bool err = gladLoadGL() == 0;
+
 		IMGUI_CHECKVERSION();
 		ImGui::CreateContext();
 		ImGuiIO& io = ImGui::GetIO();
@@ -57,6 +43,8 @@ public:
 
 	void onBegin() override
 	{
+		if (!enabled)
+			return;
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
@@ -64,18 +52,17 @@ public:
 
 	void onEnd() override
 	{
-		ImGuiIO& io = ImGui::GetIO();;
-		setDisplaySize(io);
-
+		if (!enabled)
+			return;
 		drawContents();
 	}
 
 	void onDraw() override
 	{
-		if (enabled)
-		{
-			ImGui::ShowDemoWindow(&show_demo_window);
-		}
+		if (!enabled)
+			return;
+		ImGui::ShowDemoWindow(&show_demo_window);
+		EventDispatcher::dispatch(ImGuiEvent());
 	}
 
 	~ImGuiLayer()

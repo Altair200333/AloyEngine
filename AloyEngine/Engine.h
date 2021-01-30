@@ -34,6 +34,7 @@ public:
 
 		while (Window::isRunning())
 		{
+			Window::updateWindow();
 			Window::clear();
 
 			instance().renderLayers.render();

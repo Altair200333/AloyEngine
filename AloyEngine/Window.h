@@ -17,8 +17,11 @@ class Window final : public OnUpdateSubscriber
 
 	KeyCallbackType keyCallback;
 	MouseCallbackType mouseCallback;
-
-	GLFWwindow* window{};
+	//===---===
+	WindowProps properties;
+	GLFWwindow* window = nullptr;
+	GLFWmonitor* monitor = nullptr;
+	bool updateViewport = true;
 
 	static void initGLFW()
 	{
@@ -28,9 +31,18 @@ class Window final : public OnUpdateSubscriber
 		glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	}
 
+	void assignCallbacks() const
+	{
+		glfwSetWindowSizeCallback(window, resizeCallback);
+		glfwSetFramebufferSizeCallback(window, frameBufferSizeCallback);
+		glfwSetKeyCallback(window, windowKeyCallback);
+		glfwSetCursorPosCallback(window, windowMouseCallback);
+	}
+
 	void createWindow(const WindowProps& props)
 	{
-		window = glfwCreateWindow(static_cast<int>(props.width), static_cast<int>(props.height), props.name.c_str(), nullptr, nullptr);
+		properties = props;
+		window = glfwCreateWindow(static_cast<int>(properties.width), static_cast<int>(properties.height), properties.name.c_str(), nullptr, nullptr);
 
 		if (window == nullptr)
 		{
@@ -39,15 +51,19 @@ class Window final : public OnUpdateSubscriber
 		}
 
 		glfwMakeContextCurrent(window);
+		glfwSetWindowUserPointer(window, this);
 
 		if (!gladLoadGLLoader(reinterpret_cast<GLADloadproc>(glfwGetProcAddress)))
 		{
 			Logger::log("Failed to initialize GLAD");
 		}
+		
+		monitor = glfwGetPrimaryMonitor();
+		
+		glfwGetWindowSize(window, &properties.width, &properties.height);
+		glfwGetWindowPos(window, &properties.position[0], &properties.position[1]);
 
-		glfwSetFramebufferSizeCallback(window, frameBufferSizeCallback);
-		glfwSetKeyCallback(window, windowKeyCallback);
-		glfwSetCursorPosCallback(window, windowMouseCallback);
+		assignCallbacks();
 	}
 	
 	bool running = true;
@@ -57,8 +73,42 @@ class Window final : public OnUpdateSubscriber
 		static Window windowInstance{};
 		return windowInstance;
 	}
+	static void resizeCallback(GLFWwindow* window, int cx, int cy)
+	{
+		instance().updateViewport = true;
+	}
+	
 public:
+	static bool isFullscreen()
+	{
+		return glfwGetWindowMonitor(instance().window) != nullptr;
+	}
+	static void setFullScreen(bool fullscreen)
+	{
+		Window& inst = instance();
+		if (isFullscreen() == fullscreen)
+			return;
 
+		if (fullscreen)
+		{
+			// backup window position and window size
+			glfwGetWindowPos(inst.window, &inst.properties.position[0], &inst.properties.position[1]);
+			glfwGetWindowSize(inst.window, &inst.properties.width, &inst.properties.height);
+
+			// get resolution of monitor
+			const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+
+			// switch to full screen
+			glfwSetWindowMonitor(inst.window, inst.monitor, 0, 0, mode->width, mode->height, 0);
+		}
+		else
+		{
+			// restore last window size and position
+			glfwSetWindowMonitor(inst.window, nullptr, inst.properties.position[0], inst.properties.position[1],
+				inst.properties.width, inst.properties.height, 0);
+		}
+		inst.updateViewport = true;
+	}
 	static void init(const WindowProps& props)
 	{
 		instance().initGLFW();
@@ -87,16 +137,23 @@ public:
 		glfwSetInputMode(instance().getGLFWwindow(), GLFW_CURSOR, mode);
 	}
 	
-	//return glfwWindow for needs of input
+	//return glfwWindow for needs of Input
 	static GLFWwindow* getGLFWwindow()
 	{
 		return instance().window;
 	}
-	
+	static void updateWindow()
+	{
+		if (instance().updateViewport)
+		{
+			glViewport(0, 0, instance().properties.width, instance().properties.height);
+			instance().updateViewport = false;
+		}
+	}
 	void onUpdate() override
 	{
 		running = !glfwWindowShouldClose(window);
-
+		
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}

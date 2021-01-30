@@ -28,5 +28,9 @@ public:
 		{
 			debugGui->setEnabled(!debugGui->enabled);
 		}
+		if (Input::getKeyDown(KeyCode::R))
+		{
+			Window::setFullScreen(!Window::isFullscreen());
+		}
 	}
 };
