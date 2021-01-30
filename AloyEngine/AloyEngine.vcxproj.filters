@@ -8,29 +8,29 @@
     <Filter Include="Vendor">
       <UniqueIdentifier>{d82582d4-2236-4452-984b-d83d1f529aca}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Window">
-      <UniqueIdentifier>{1b5a2da0-09b2-4948-9ce2-7543f1b77e49}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EventSystem">
-      <UniqueIdentifier>{89ebb851-2f50-4909-955e-49acfc75ada0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EventSystem\Events">
-      <UniqueIdentifier>{f620e456-7603-4053-afb4-38fdbd0e3664}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="EventSystem\EventSubscribers">
-      <UniqueIdentifier>{44f98bd7-8f46-40e9-84c2-89a77a9d5164}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="RenderLayer">
-      <UniqueIdentifier>{fc259161-8b1a-471c-9612-0a74518d6d36}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine">
       <UniqueIdentifier>{473f5fca-f132-4205-9a70-81aa6b08d297}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Application">
+      <UniqueIdentifier>{df751939-89e7-415e-85b4-9005cf33a509}</UniqueIdentifier>
     </Filter>
     <Filter Include="Engine\Input">
       <UniqueIdentifier>{b08965f4-b38b-4414-889e-416ce3e46a31}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Application">
-      <UniqueIdentifier>{df751939-89e7-415e-85b4-9005cf33a509}</UniqueIdentifier>
+    <Filter Include="Engine\RenderLayer">
+      <UniqueIdentifier>{fc259161-8b1a-471c-9612-0a74518d6d36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Window">
+      <UniqueIdentifier>{1b5a2da0-09b2-4948-9ce2-7543f1b77e49}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\EventSystem">
+      <UniqueIdentifier>{89ebb851-2f50-4909-955e-49acfc75ada0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\EventSystem\Events">
+      <UniqueIdentifier>{f620e456-7603-4053-afb4-38fdbd0e3664}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\EventSystem\EventSubscribers">
+      <UniqueIdentifier>{44f98bd7-8f46-40e9-84c2-89a77a9d5164}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -41,32 +41,32 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Window.h">
-      <Filter>Window</Filter>
+      <Filter>Engine\Window</Filter>
     </ClInclude>
     <ClInclude Include="WindowProps.h">
-      <Filter>Window</Filter>
+      <Filter>Engine\Window</Filter>
     </ClInclude>
     <ClInclude Include="Logger.h" />
     <ClInclude Include="Event.h">
-      <Filter>EventSystem\Events</Filter>
+      <Filter>Engine\EventSystem\Events</Filter>
     </ClInclude>
     <ClInclude Include="EventSubscriber.h">
-      <Filter>EventSystem\EventSubscribers</Filter>
+      <Filter>Engine\EventSystem\EventSubscribers</Filter>
     </ClInclude>
     <ClInclude Include="EventDispatcher.h">
-      <Filter>EventSystem</Filter>
+      <Filter>Engine\EventSystem</Filter>
     </ClInclude>
     <ClInclude Include="OnUpdateEvent.h">
-      <Filter>EventSystem\Events</Filter>
+      <Filter>Engine\EventSystem\Events</Filter>
     </ClInclude>
     <ClInclude Include="OnUpdateSubscriber.h">
-      <Filter>EventSystem\EventSubscribers</Filter>
+      <Filter>Engine\EventSystem\EventSubscribers</Filter>
     </ClInclude>
     <ClInclude Include="RenderLayersSet.h">
-      <Filter>RenderLayer</Filter>
+      <Filter>Engine\RenderLayer</Filter>
     </ClInclude>
     <ClInclude Include="RenderLayer.h">
-      <Filter>RenderLayer</Filter>
+      <Filter>Engine\RenderLayer</Filter>
     </ClInclude>
     <ClInclude Include="Engine.h">
       <Filter>Engine</Filter>

@@ -1,6 +1,5 @@
 #pragma once
 #include <functional>
-#include <iostream>
 #include <glad/glad.h>
 #include "GLFW/glfw3.h"
 #include "WindowProps.h"
@@ -10,15 +9,15 @@
 
 class Window final : public OnUpdateSubscriber
 {
-	WindowProps properties;
-	GLFWwindow* window{};
 
 	using KeyCallbackType = std::function<void(int, int, int)>;
 	using MouseCallbackType = std::function<void(double, double)>;
 
 	KeyCallbackType keyCallback;
 	MouseCallbackType mouseCallback;
-	
+
+	GLFWwindow* window{};
+
 	static void initGLFW()
 	{
 		glfwInit();
@@ -29,7 +28,7 @@ class Window final : public OnUpdateSubscriber
 
 	void createWindow(const WindowProps& props)
 	{
-		window = glfwCreateWindow(props.width, props.height, props.name.c_str(), nullptr, nullptr);
+		window = glfwCreateWindow(static_cast<int>(props.width), static_cast<int>(props.height), props.name.c_str(), nullptr, nullptr);
 
 		if (window == nullptr)
 		{
@@ -60,7 +59,6 @@ public:
 
 	static void init(const WindowProps& props)
 	{
-		instance().properties = props;
 		instance().initGLFW();
 		instance().createWindow(props);
 	}

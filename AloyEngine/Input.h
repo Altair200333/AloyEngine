@@ -23,7 +23,8 @@ class Input final : virtual public OnUpdateSubscriber
 
 	Input() = default;
 public:
-	static void keyStateCallback(int key, int scancode, int action)
+	
+	static void keyStateCallback(int key, int /*scancode*/, int action)
 	{
 		instance().keyEvents[key] = action;
 	}

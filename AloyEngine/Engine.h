@@ -38,7 +38,6 @@ public:
 			instance().renderLayers.render();
 
 			EventDispatcher::dispatch(OnUpdateEvent());
-			//std::cout << MouseInput::dx() << " " << MouseInput::dy() << "\n";
 		}
 	}
 

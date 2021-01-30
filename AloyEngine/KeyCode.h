@@ -14,6 +14,7 @@ namespace KeyCode
 		D = GLFW_KEY_D,
 		Q = GLFW_KEY_Q,
 		E = GLFW_KEY_E,
+		R = GLFW_KEY_R,
 
 		num1 = GLFW_KEY_1,
 		num2 = GLFW_KEY_2,
