@@ -71,9 +71,9 @@ template<>
 class OpenGlUploader<PointLight>
 {
 public:
-	static void upload(const std::shared_ptr<PointLight>& light, const std::shared_ptr<Transform>& transform, int id, Shader& shader)
+	static void upload(const std::shared_ptr<PointLight>& light, int id, Shader& shader)
 	{
-		shader.setVec3("lights[" + std::to_string(id) + "].lightPos", transform->position);
+		shader.setVec3("lights[" + std::to_string(id) + "].lightPos", light->position);
 		shader.setVec3("lights[" + std::to_string(id) + "].lightColor", light->color);
 	}
 	static void upload(std::vector<std::shared_ptr<Object>>& lights, Shader& shader)
@@ -81,8 +81,7 @@ public:
 		for(int i=0;i<lights.size();++i)
 		{
 			auto pointLight = lights[i]->getComponent<PointLight>();
-			auto transform = lights[i]->getComponent<Transform>();
-			upload(pointLight, transform, i, shader);
+			upload(pointLight, i, shader);
 		}
 		shader.setInt("pointLightCount", lights.size());
 	}

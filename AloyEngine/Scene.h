@@ -1,6 +1,8 @@
 #pragma once
 #include <vector>
 
+
+#include "DebugGui.h"
 #include "DebugGuiDrawable.h"
 #include "ImGuiSeedGenerator.h"
 #include "Object.h"
@@ -21,7 +23,7 @@ public:
 	}
 	void onDebugGuiDraw() override
 	{
-		ImGui::Begin("Scene");
+		DebugGui::beginWindow("Scene");
 
 		for(int i=0; i < objects.size(); ++i)
 		{
@@ -30,9 +32,7 @@ public:
 			{
 				if(ImGui::CollapsingHeader(("Object" + std::to_string(i)).c_str()))
 				{
-					ImGui::PushID(ImGuiSeedGenerator::nextSeed());
-					ImGui::ColorEdit3("Albedo", reinterpret_cast<float*>(&material->albedoColor));
-					ImGui::PopID();
+					DebugGui::colorPick("Albedo", material->albedoColor);
 				}
 			}
 		}
@@ -40,24 +40,9 @@ public:
 		{
 			if (ImGui::CollapsingHeader(("light" + std::to_string(i)).c_str()))
 			{
-				auto light = lights[i]->getComponent<PointLight>();
-				if (light)
-				{
-
-					ImGui::PushID(ImGuiSeedGenerator::nextSeed());
-					ImGui::ColorEdit3("color", reinterpret_cast<float*>(&light->color));
-					ImGui::PopID();
-
-				}
-				auto transform = lights[i]->getComponent<Transform>();
-				if (transform)
-				{
-					ImGui::PushID(ImGuiSeedGenerator::nextSeed());
-					ImGui::DragFloat3("position", reinterpret_cast<float*>(&transform->position));
-					ImGui::PopID();
-				}
+				lights[i]->getComponent<PointLight>()->onDebugGuiDraw();
 			}
 		}
-		ImGui::End();
+		DebugGui::endWindow();
 	}
 };

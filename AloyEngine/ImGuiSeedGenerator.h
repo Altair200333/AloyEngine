@@ -1,20 +1,13 @@
 #pragma once
 #include <vector>
 
+//when rendering multiple fields with same names ImGui wants unique seeds
+//so this class is just handy tool for that
+
 class ImGuiSeedGenerator final
 {
-	static constexpr int seedSize = 1000;
-	std::vector<int> seeds;
 	int currentSeed = 0;
-
-	ImGuiSeedGenerator()
-	{
-		for (int i = 0; i < seedSize; ++i)
-		{
-			seeds.push_back(i);
-		}
-	}
-
+	
 	static ImGuiSeedGenerator& instance()
 	{
 		static ImGuiSeedGenerator generator;
@@ -25,9 +18,7 @@ public:
 
 	static int nextSeed()
 	{
-		if (instance().currentSeed >= seedSize)
-			instance().currentSeed = 0;
-		return instance().seeds[instance().currentSeed++];
+		return instance().currentSeed++;
 	}
 	static void reset()
 	{

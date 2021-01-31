@@ -24,8 +24,8 @@ public:
 	std::shared_ptr<Object> createPointLight(const Vector3& pos)
 	{
 		std::shared_ptr<Object> object = std::make_shared<Object>();
-		object->addComponent(std::make_shared<Transform>(pos));
 		object->addComponent(std::make_shared<PointLight>());
+		object->getComponent<PointLight>()->position = pos;
 		return object;
 	}
 	AloyDemoApp()

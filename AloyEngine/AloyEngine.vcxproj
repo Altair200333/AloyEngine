@@ -175,6 +175,7 @@
     <ClInclude Include="Component.h" />
     <ClInclude Include="ComponentManager.h" />
     <ClInclude Include="CursorModes.h" />
+    <ClInclude Include="DebugGui.h" />
     <ClInclude Include="DebugGuiDrawable.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="Event.h" />

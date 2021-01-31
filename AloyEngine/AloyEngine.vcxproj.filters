@@ -53,8 +53,8 @@
     <Filter Include="Engine\OpenGL">
       <UniqueIdentifier>{5685e222-a9dc-4ff4-8a67-0fc44b82fc03}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\Interfaces">
-      <UniqueIdentifier>{d400e6ce-9706-45e0-b029-55d8b61d7367}</UniqueIdentifier>
+    <Filter Include="Engine\RenderLayer\Layers\DebugImGui">
+      <UniqueIdentifier>{695a92dd-6e4d-444e-b6eb-db8f2b447216}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -161,9 +161,6 @@
     <ClInclude Include="imgui\imstb_truetype.h">
       <Filter>Vendor\ImGui</Filter>
     </ClInclude>
-    <ClInclude Include="ImGuiLayer.h">
-      <Filter>Engine\RenderLayer\Layers</Filter>
-    </ClInclude>
     <ClInclude Include="ImGuiEventSubscriber.h">
       <Filter>Engine\EventSystem\EventSubscribers</Filter>
     </ClInclude>
@@ -236,9 +233,6 @@
     <ClInclude Include="Profiler.h">
       <Filter>Engine</Filter>
     </ClInclude>
-    <ClInclude Include="DebugGuiDrawable.h">
-      <Filter>Engine\Interfaces</Filter>
-    </ClInclude>
     <ClInclude Include="PointLight.h">
       <Filter>Engine\ECS\Components</Filter>
     </ClInclude>
@@ -248,8 +242,17 @@
     <ClInclude Include="RenderContext.h">
       <Filter>Engine\OpenGL</Filter>
     </ClInclude>
+    <ClInclude Include="ImGuiLayer.h">
+      <Filter>Engine\RenderLayer\Layers\DebugImGui</Filter>
+    </ClInclude>
     <ClInclude Include="ImGuiSeedGenerator.h">
-      <Filter>Engine</Filter>
+      <Filter>Engine\RenderLayer\Layers\DebugImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugGuiDrawable.h">
+      <Filter>Engine\RenderLayer\Layers\DebugImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugGui.h">
+      <Filter>Engine\RenderLayer\Layers\DebugImGui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
