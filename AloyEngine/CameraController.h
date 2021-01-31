@@ -51,7 +51,7 @@ inline void CameraController::onUpdate()
 		if (Input::getKeyPressed(key))
 		{
 			hasMoved = true;
-			transform->position += (camera->front * direction.z + camera->right * direction.x + camera->up * direction.y) * speed;
+			transform->position += (camera->front * direction.z + camera->right * direction.x + camera->up * direction.y) * speed * Profiler::currentFrameTime();
 		}
 	}
 
@@ -59,8 +59,8 @@ inline void CameraController::onUpdate()
 	{
 		hasMoved = true;
 
-		camera->yaw += static_cast<float>(MouseInput::dx()) * mouseSensitivity;
-		camera->pitch += static_cast<float>(MouseInput::dy()) * mouseSensitivity;
+		camera->yaw += static_cast<float>(MouseInput::dx()) * mouseSensitivity * Profiler::currentFrameTime();
+		camera->pitch += static_cast<float>(MouseInput::dy()) * mouseSensitivity * Profiler::currentFrameTime();
 
 		// Make sure that when pitch is out of bounds, screen doesn't get flipped
 		camera->pitch = std::clamp(camera->pitch, -89.0f, 89.0f);

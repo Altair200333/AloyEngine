@@ -47,6 +47,12 @@
     <Filter Include="Engine\ECS\Components">
       <UniqueIdentifier>{41aa52af-fd34-477f-9c95-3502818bb29e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Vendor\stb_image">
+      <UniqueIdentifier>{a8dd16f7-5a4f-424a-9961-e620b553f197}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\OpenGL">
+      <UniqueIdentifier>{5685e222-a9dc-4ff4-8a67-0fc44b82fc03}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -161,9 +167,6 @@
     <ClInclude Include="ImGuiEvent.h">
       <Filter>Engine\EventSystem\Events</Filter>
     </ClInclude>
-    <ClInclude Include="Shader.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Vector3.h">
       <Filter>Engine</Filter>
     </ClInclude>
@@ -207,6 +210,30 @@
       <Filter>Engine\RenderLayer\Layers</Filter>
     </ClInclude>
     <ClInclude Include="MeshLoader.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>Vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image_write.h">
+      <Filter>Vendor\stb_image</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Engine\ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
+      <Filter>Engine\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Engine\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Vertex.h">
+      <Filter>Engine\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLUploader.h">
+      <Filter>Engine\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="Profiler.h">
       <Filter>Engine</Filter>
     </ClInclude>
   </ItemGroup>

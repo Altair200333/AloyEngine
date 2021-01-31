@@ -11,34 +11,33 @@ class AloyDemoApp final: public Application, public ImGuiEventSubscriber
 	std::shared_ptr<OpenGLSceneRenderer> sceneRenderer = std::make_shared<OpenGLSceneRenderer>();
 public:
 	std::shared_ptr<Scene> scene = std::make_shared<Scene>();
-
+	
+	std::shared_ptr<Object> createCamera() const
+	{
+		std::shared_ptr<Object> object = std::make_shared<Object>();
+		object->addComponent(std::make_shared<Camera>());
+		object->addComponent(std::make_shared<Transform>());
+		object->addComponent(std::make_shared<CameraController>());
+		return object;
+	}
+	
 	AloyDemoApp()
 	{
 		sceneRenderer->assignScene(scene);
 		Engine::addRenderLayer(sceneRenderer);
 		Engine::addRenderLayer(debugGui);
 
-		std::shared_ptr<Object> object1 = std::make_shared<Object>();
-		object1->addComponent(std::make_shared<Mesh>());
-		object1->addComponent(std::make_shared<MeshRenderer>());
-		object1->getComponent<MeshRenderer>()->init();
+		scene->camera = createCamera();
 		
-		scene->addObject(object1);
-
-		std::shared_ptr<Object> object2 = std::make_shared<Object>();
-		object2->addComponent(std::make_shared<Camera>());
-		object2->addComponent(std::make_shared<Transform>());
-		object2->addComponent(std::make_shared<CameraController>());
-		scene->camera = object2;
-		
-		auto r = MeshLoader().loadModel("E:\\work\\blender\\suz1.fbx");
-		for(auto& mesh: r)
+		auto models = MeshLoader().loadModel("E:\\work\\blender\\suz1.fbx");
+		for(auto& model: models)
 		{
-			std::shared_ptr<Object> object3 = std::make_shared<Object>();
-			object3->addComponent(mesh);
-			object3->addComponent(std::make_shared<MeshRenderer>());
-			object3->getComponent<MeshRenderer>()->init();
-			scene->addObject(object3);
+			std::shared_ptr<Object> object = std::make_shared<Object>();
+			object->addComponent(model.mesh);
+			object->addComponent(model.material);
+			object->addComponent(std::make_shared<MeshRenderer>());
+			object->getComponent<MeshRenderer>()->init();
+			scene->addObject(object);
 		}
 	}
 	void onUpdate() override

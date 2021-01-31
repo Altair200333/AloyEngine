@@ -2,76 +2,23 @@
 #include <vector>
 
 #include "Component.h"
+#include "Texture.h"
+#include "Vertex.h"
 
 class Mesh final: public Component
 {
 public:
-    struct Vertex {
-        glm::vec3 Position;
-        glm::vec3 Normal;
-        glm::vec2 TexCoords;
-    };
-    struct Texture {
-        unsigned int id;
-        std::string type;
-    };
-    std::vector<Vertex> verti = {
-        {{-0.5f, -0.5f, -0.5f},  {0.0f,  0.0f, -1.0f}, {0,0}},
-        {{ 0.5f, -0.5f, -0.5f},  {0.0f,  0.0f, -1.0f}, {0,0}},
-        {{ 0.5f,  0.5f, -0.5f},  {0.0f,  0.0f, -1.0f}, {0,0}},
-        {{ 0.5f,  0.5f, -0.5f},  {0.0f,  0.0f, -1.0f}, {0,0}},
-        {{-0.5f,  0.5f, -0.5f},  {0.0f,  0.0f, -1.0f}, {0,0}},
-        {{-0.5f, -0.5f, -0.5f},  {0.0f,  0.0f, -1.0f}, {0,0}},
-
-        {{-0.5f, -0.5f,  0.5f},  {0.0f,  0.0f,  1.0f}, {0,0}},
-        {{ 0.5f, -0.5f,  0.5f},  {0.0f,  0.0f,  1.0f}, {0,0}},
-        {{ 0.5f,  0.5f,  0.5f},  {0.0f,  0.0f,  1.0f}, {0,0}},
-        {{ 0.5f,  0.5f,  0.5f},  {0.0f,  0.0f,  1.0f}, {0,0}},
-        {{-0.5f,  0.5f,  0.5f},  {0.0f,  0.0f,  1.0f}, {0,0}},
-        {{-0.5f, -0.5f,  0.5f},  {0.0f,  0.0f,  1.0f}, {0,0}},
-
-        {{-0.5f,  0.5f,  0.5f}, {-1.0f,  0.0f,  0.0f}, {0,0}},
-        {{-0.5f,  0.5f, -0.5f}, {-1.0f,  0.0f,  0.0f}, {0,0}},
-        {{-0.5f, -0.5f, -0.5f}, {-1.0f,  0.0f,  0.0f}, {0,0}},
-        {{-0.5f, -0.5f, -0.5f}, {-1.0f,  0.0f,  0.0f}, {0,0}},
-        {{-0.5f, -0.5f,  0.5f}, {-1.0f,  0.0f,  0.0f}, {0,0}},
-        {{-0.5f,  0.5f,  0.5f}, {-1.0f,  0.0f,  0.0f}, {0,0}},
-
-        {{ 0.5f,  0.5f,  0.5f},  {1.0f,  0.0f,  0.0f}, {0,0}},
-        {{ 0.5f,  0.5f, -0.5f},  {1.0f,  0.0f,  0.0f}, {0,0}},
-        {{ 0.5f, -0.5f, -0.5f},  {1.0f,  0.0f,  0.0f}, {0,0}},
-        {{ 0.5f, -0.5f, -0.5f},  {1.0f,  0.0f,  0.0f}, {0,0}},
-        {{ 0.5f, -0.5f,  0.5f},  {1.0f,  0.0f,  0.0f}, {0,0}},
-        {{ 0.5f,  0.5f,  0.5f},  {1.0f,  0.0f,  0.0f}, {0,0}},
-
-        {{-0.5f, -0.5f, -0.5f},  {0.0f, -1.0f,  0.0f}, {0,0}},
-        {{ 0.5f, -0.5f, -0.5f},  {0.0f, -1.0f,  0.0f}, {0,0}},
-        {{ 0.5f, -0.5f,  0.5f},  {0.0f, -1.0f,  0.0f}, {0,0}},
-        {{ 0.5f, -0.5f,  0.5f},  {0.0f, -1.0f,  0.0f}, {0,0}},
-        {{-0.5f, -0.5f,  0.5f},  {0.0f, -1.0f,  0.0f}, {0,0}},
-        {{-0.5f, -0.5f, -0.5f},  {0.0f, -1.0f,  0.0f}, {0,0}},
-
-        {{-0.5f,  0.5f, -0.5f},  {0.0f,  1.0f,  0.0f}, {0,0}},
-        {{ 0.5f,  0.5f, -0.5f},  {0.0f,  1.0f,  0.0f}, {0,0}},
-        {{ 0.5f,  0.5f,  0.5f},  {0.0f,  1.0f,  0.0f}, {0,0}},
-        {{ 0.5f,  0.5f,  0.5f},  {0.0f,  1.0f,  0.0f}, {0,0}},
-        {{-0.5f,  0.5f,  0.5f},  {0.0f,  1.0f,  0.0f}, {0,0}},
-        {{-0.5f,  0.5f, -0.5f},  {0.0f,  1.0f,  0.0f}, {0,0}}
-    };
+  
+    
 	std::vector<Vertex> vertices;
-    std::vector<unsigned int> indices{0,1,2,3,4,5,6, 7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35};
-    std::vector<Texture>      textures;
+    std::vector<unsigned int> indices;
 
 	/*vertices + normals*/
 	
-	Mesh()
-	{
-        vertices = verti;
-	}
-    Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices, std::vector<Texture> textures)
+    Mesh() = default;
+    Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices)
     {
         this->vertices = vertices;
         this->indices = indices;
-        this->textures = textures;
     }
 };

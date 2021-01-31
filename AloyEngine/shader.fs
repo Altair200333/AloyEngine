@@ -3,11 +3,25 @@ out vec4 FragColor;
 
 in vec3 Normal;  
 in vec3 FragPos;  
-  
-uniform vec3 lightPos; 
+in vec2 TexCoords;
+
 uniform vec3 viewPos; 
-uniform vec3 lightColor;
+
 uniform vec3 objectColor;
+
+uniform vec3 lightPos; 
+uniform vec3 lightColor;
+
+uniform bool hasAlbedoTexture;
+uniform sampler2D texture_diffuse1;
+
+vec3 getAlbedo()
+{
+    if(hasAlbedoTexture)
+        return texture(texture_diffuse1, TexCoords).xyz;
+    else
+        return objectColor;
+}
 
 void main()
 {
@@ -28,6 +42,6 @@ void main()
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
     vec3 specular = specularStrength * spec * lightColor;  
         
-    vec3 result = (ambient + diffuse + specular) * objectColor;
+    vec3 result = (ambient + diffuse + specular) * getAlbedo();
     FragColor = vec4(result, 1.0);
 } 

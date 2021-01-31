@@ -9,6 +9,7 @@
 #include "Input.h"
 #include "MouseInput.h"
 #include "ImGuiLayer.h"
+#include "Profiler.h"
 
 class Engine final
 {
@@ -36,10 +37,13 @@ public:
 		{
 			Window::updateWindow();
 			Window::clear();
-
+			
+			Profiler::startFrame();
+			
 			instance().renderLayers.render();
-
 			EventDispatcher::dispatch(OnUpdateEvent());
+			
+			Profiler::endFrame();
 		}
 	}
 

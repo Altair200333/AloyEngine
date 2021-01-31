@@ -123,3 +123,90 @@ Engine running
 Engine running
 Engine running
 Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+ERROR::SHADER_COMPILATION_ERROR of type: FRAGMENT
+ERROR: 0:15: 'TexCoords' : undeclared identifier 
+ERROR: 0:16: 'texture' : no matching overloaded function found (using implicit conversion) 
+ERROR: 0:16: 'texture' : function is not known 
+ERROR: 0:15: 'assign' :  cannot convert from 'const highp float' to 'FragUserData 4-component vector of highp float'
+
+
+ERROR::PROGRAM_LINKING_ERROR of type: PROGRAM
+Attached fragment shader is not compiled.
+
+Engine running
+ERROR::SHADER_COMPILATION_ERROR of type: FRAGMENT
+ERROR: 0:15: 'TexCoords' : undeclared identifier 
+ERROR: 0:16: 'texture' : no matching overloaded function found (using implicit conversion) 
+ERROR: 0:16: 'texture' : function is not known 
+ERROR: 0:15: 'assign' :  cannot convert from 'const highp float' to 'FragUserData 4-component vector of highp float'
+
+
+ERROR::PROGRAM_LINKING_ERROR of type: PROGRAM
+Attached fragment shader is not compiled.
+
+Engine running
+ERROR::SHADER_COMPILATION_ERROR of type: FRAGMENT
+ERROR: 0:15: 'TexCoords' : undeclared identifier 
+ERROR: 0:16: 'texture' : no matching overloaded function found (using implicit conversion) 
+ERROR: 0:16: 'texture' : function is not known 
+ERROR: 0:15: 'assign' :  cannot convert from 'const highp float' to 'FragUserData 4-component vector of highp float'
+
+
+ERROR::PROGRAM_LINKING_ERROR of type: PROGRAM
+Attached fragment shader is not compiled.
+
+Engine running
+ERROR::SHADER_COMPILATION_ERROR of type: FRAGMENT
+ERROR: 0:15: 'TexCoords' : undeclared identifier 
+ERROR: 0:16: 'texture' : no matching overloaded function found (using implicit conversion) 
+ERROR: 0:16: 'texture' : function is not known 
+ERROR: 0:15: 'assign' :  cannot convert from 'const highp float' to 'FragUserData 4-component vector of highp float'
+
+
+ERROR::PROGRAM_LINKING_ERROR of type: PROGRAM
+Attached fragment shader is not compiled.
+
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
