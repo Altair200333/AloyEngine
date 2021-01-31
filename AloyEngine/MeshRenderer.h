@@ -11,6 +11,7 @@
 #include "Mesh.h"
 #include "Object.h"
 #include "OpenGLUploader.h"
+#include "RenderContext.h"
 
 class MeshRenderer final: public Component
 {
@@ -55,26 +56,25 @@ public:
 	{
 		mesh = owner->getComponent<Mesh>();
 		material = owner->getComponent<Material>();
+
 		genBuffers();
-
 		bindBuffers();
-
 		setAttribArray();
 
 		glBindVertexArray(0);
 	}
 
-	
-	void render(const CameraContext& context)
+	void render(const RenderContext& context)
 	{
 		shader.use();
-		shader.setVec3("objectColor", 1.0f, 0.5f, 0.31f);
+
 		
 		shader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
-		shader.setVec3("lightPos", Vector3{1,1,1});
+		shader.setVec3("lightPos", Vector3{1,-1.2,1.1});
 		
-		OpenGlUploader<CameraContext>::upload(context, shader);
+		OpenGlUploader<CameraContext>::upload(context.cameraContext, shader);
 		OpenGlUploader<Material>::upload(material, shader);
+		OpenGlUploader<PointLight>::upload(context.lights, shader);
 		
 		glBindVertexArray(VAO);
 		glDrawElements(GL_TRIANGLES, mesh->indices.size(), GL_UNSIGNED_INT, 0);

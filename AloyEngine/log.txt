@@ -210,3 +210,110 @@ Engine running
 Engine running
 Engine running
 Engine running
+ERROR::SHADER_COMPILATION_ERROR of type: FRAGMENT
+ERROR: 0:21: 'texture_diffuse1' : undeclared identifier 
+ERROR: 0:21: 'texture' : no matching overloaded function found (using implicit conversion) 
+ERROR: 0:21: 'texture' : function is not known 
+ERROR: 0:21: 'xyz' : field selection requires structure, vector, or matrix on left hand side 
+
+
+ERROR::PROGRAM_LINKING_ERROR of type: PROGRAM
+Attached fragment shader is not compiled.
+
+ERROR::SHADER_COMPILATION_ERROR of type: FRAGMENT
+ERROR: 0:21: 'texture_diffuse1' : undeclared identifier 
+ERROR: 0:21: 'texture' : no matching overloaded function found (using implicit conversion) 
+ERROR: 0:21: 'texture' : function is not known 
+ERROR: 0:21: 'xyz' : field selection requires structure, vector, or matrix on left hand side 
+
+
+ERROR::PROGRAM_LINKING_ERROR of type: PROGRAM
+Attached fragment shader is not compiled.
+
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+ERROR::SHADER_COMPILATION_ERROR of type: FRAGMENT
+ERROR: 0:16: '}' : syntax error syntax error
+
+
+ERROR::PROGRAM_LINKING_ERROR of type: PROGRAM
+Attached fragment shader is not compiled.
+
+ERROR::SHADER_COMPILATION_ERROR of type: FRAGMENT
+ERROR: 0:16: '}' : syntax error syntax error
+
+
+ERROR::PROGRAM_LINKING_ERROR of type: PROGRAM
+Attached fragment shader is not compiled.
+
+ERROR::SHADER_COMPILATION_ERROR of type: FRAGMENT
+ERROR: 0:16: '}' : syntax error syntax error
+
+
+ERROR::PROGRAM_LINKING_ERROR of type: PROGRAM
+Attached fragment shader is not compiled.
+
+Engine running
+ERROR::SHADER_COMPILATION_ERROR of type: FRAGMENT
+ERROR: 0:16: '}' : syntax error syntax error
+
+
+ERROR::PROGRAM_LINKING_ERROR of type: PROGRAM
+Attached fragment shader is not compiled.
+
+ERROR::SHADER_COMPILATION_ERROR of type: FRAGMENT
+ERROR: 0:16: '}' : syntax error syntax error
+
+
+ERROR::PROGRAM_LINKING_ERROR of type: PROGRAM
+Attached fragment shader is not compiled.
+
+ERROR::SHADER_COMPILATION_ERROR of type: FRAGMENT
+ERROR: 0:16: '}' : syntax error syntax error
+
+
+ERROR::PROGRAM_LINKING_ERROR of type: PROGRAM
+Attached fragment shader is not compiled.
+
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running
+Engine running

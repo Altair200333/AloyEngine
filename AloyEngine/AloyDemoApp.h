@@ -3,6 +3,7 @@
 #include "CameraController.h"
 #include "MeshLoader.h"
 #include "OpenGLSceneRenderer.h"
+#include "PointLight.h"
 #include "Scene.h"
 
 class AloyDemoApp final: public Application, public ImGuiEventSubscriber
@@ -20,7 +21,13 @@ public:
 		object->addComponent(std::make_shared<CameraController>());
 		return object;
 	}
-	
+	std::shared_ptr<Object> createPointLight(const Vector3& pos)
+	{
+		std::shared_ptr<Object> object = std::make_shared<Object>();
+		object->addComponent(std::make_shared<Transform>(pos));
+		object->addComponent(std::make_shared<PointLight>());
+		return object;
+	}
 	AloyDemoApp()
 	{
 		sceneRenderer->assignScene(scene);
@@ -39,6 +46,9 @@ public:
 			object->getComponent<MeshRenderer>()->init();
 			scene->addObject(object);
 		}
+		
+		scene->addLight(createPointLight({ 1,-1.2,1.1 }));
+		scene->addLight(createPointLight({ -1,-1.2,1.1 }));
 	}
 	void onUpdate() override
 	{
@@ -70,5 +80,7 @@ public:
 		ImGui::Checkbox("Debug ui", &debugGui->enabled);
 		ImGui::Checkbox("OpenGL render", &sceneRenderer->enabled);
 		ImGui::End();
+
+		scene->onDebugGuiDraw();
 	}
 };

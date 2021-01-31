@@ -6,6 +6,7 @@
 #include "imgui/imgui.h"
 #include "imgui/imgui_impl_glfw.h"
 #include "ImGuiEvent.h"
+#include "ImGuiSeedGenerator.h"
 
 class ImGuiLayer final : public RenderLayer
 {
@@ -55,8 +56,9 @@ public:
 
 	void onDraw() override
 	{
-		ImGui::ShowDemoWindow(&show_demo_window);
+		//ImGui::ShowDemoWindow(&show_demo_window);
 		EventDispatcher::dispatch(ImGuiEvent());
+		ImGuiSeedGenerator::reset();
 	}
 
 	~ImGuiLayer()

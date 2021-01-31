@@ -24,7 +24,8 @@ public:
 	}
 	void onDraw() override
 	{
-		const CameraContext context{associatedScene->camera->getComponent<Camera>(), associatedScene->camera->getComponent<Transform>()};
+		const CameraContext cameraContext{associatedScene->camera->getComponent<Camera>(), associatedScene->camera->getComponent<Transform>()};
+		const RenderContext context{ cameraContext, associatedScene->lights };
 		for(auto& object: associatedScene->objects)
 		{
 			auto meshRenderer = object->getComponent<MeshRenderer>();

@@ -53,6 +53,9 @@
     <Filter Include="Engine\OpenGL">
       <UniqueIdentifier>{5685e222-a9dc-4ff4-8a67-0fc44b82fc03}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Engine\Interfaces">
+      <UniqueIdentifier>{d400e6ce-9706-45e0-b029-55d8b61d7367}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
@@ -206,9 +209,6 @@
     <ClInclude Include="CameraController.h">
       <Filter>Engine\ECS\Components</Filter>
     </ClInclude>
-    <ClInclude Include="CameraContext.h">
-      <Filter>Engine\RenderLayer\Layers</Filter>
-    </ClInclude>
     <ClInclude Include="MeshLoader.h">
       <Filter>Engine</Filter>
     </ClInclude>
@@ -234,6 +234,21 @@
       <Filter>Engine\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="Profiler.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugGuiDrawable.h">
+      <Filter>Engine\Interfaces</Filter>
+    </ClInclude>
+    <ClInclude Include="PointLight.h">
+      <Filter>Engine\ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraContext.h">
+      <Filter>Engine\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderContext.h">
+      <Filter>Engine\OpenGL</Filter>
+    </ClInclude>
+    <ClInclude Include="ImGuiSeedGenerator.h">
       <Filter>Engine</Filter>
     </ClInclude>
   </ItemGroup>
