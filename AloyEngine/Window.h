@@ -157,13 +157,21 @@ public:
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 	}
+	static int width()
+	{
+		return instance().properties.width;
+	}
+	static int height()
+	{
+		return instance().properties.height;
+	}
 	~Window() override
 	{
 		glfwDestroyWindow(window);
 		glfwTerminate();
 	}
 private:
-
+	
 	void close() const
 	{
 		glfwSetWindowShouldClose(window, GLFW_TRUE);
@@ -171,6 +179,8 @@ private:
 
 	static void frameBufferSizeCallback(GLFWwindow* window, int width, int height)
 	{
+		instance().properties.width = width;
+		instance().properties.height = height;
 		glViewport(0, 0, width, height);
 	}
 

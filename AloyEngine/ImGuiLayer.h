@@ -43,8 +43,6 @@ public:
 
 	void onBegin() override
 	{
-		if (!enabled)
-			return;
 		ImGui_ImplOpenGL3_NewFrame();
 		ImGui_ImplGlfw_NewFrame();
 		ImGui::NewFrame();
@@ -52,15 +50,11 @@ public:
 
 	void onEnd() override
 	{
-		if (!enabled)
-			return;
 		drawContents();
 	}
 
 	void onDraw() override
 	{
-		if (!enabled)
-			return;
 		ImGui::ShowDemoWindow(&show_demo_window);
 		EventDispatcher::dispatch(ImGuiEvent());
 	}

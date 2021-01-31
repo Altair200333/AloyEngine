@@ -12,6 +12,8 @@ public:
 	{
 		for (auto& layer : layers)
 		{
+			if(!layer->enabled)
+				continue;
 			layer->onBegin();
 			layer->onDraw();
 			layer->onEnd();

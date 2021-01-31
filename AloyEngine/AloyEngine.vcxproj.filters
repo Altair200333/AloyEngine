@@ -182,5 +182,29 @@
     <ClInclude Include="Transform.h">
       <Filter>Engine\ECS\Components</Filter>
     </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLSceneRenderer.h">
+      <Filter>Engine\RenderLayer\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshRenderer.h">
+      <Filter>Engine\ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="FileUtils.h">
+      <Filter>Engine\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Engine\ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Engine\ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraContext.h">
+      <Filter>Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraController.h">
+      <Filter>Engine\ECS\Components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

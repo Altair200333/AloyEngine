@@ -1,14 +1,35 @@
 #pragma once
 #include "Application.h"
+#include "CameraController.h"
+#include "OpenGLSceneRenderer.h"
+#include "Scene.h"
 
-class AloyDemoApp final: public Application
+class AloyDemoApp final: public Application, public ImGuiEventSubscriber
 {
 	std::shared_ptr<ImGuiLayer> debugGui = std::make_shared<ImGuiLayer>();
-
+	std::shared_ptr<OpenGLSceneRenderer> sceneRenderer = std::make_shared<OpenGLSceneRenderer>();
 public:
+	std::shared_ptr<Scene> scene = std::make_shared<Scene>();
+
 	AloyDemoApp()
 	{
+		sceneRenderer->assignScene(scene);
+		Engine::addRenderLayer(sceneRenderer);
 		Engine::addRenderLayer(debugGui);
+
+		std::shared_ptr<Object> object1 = std::make_shared<Object>();
+		object1->addComponent(std::make_shared<Mesh>());
+		object1->addComponent(std::make_shared<MeshRenderer>());
+		object1->getComponent<MeshRenderer>()->init();
+		
+		scene->addObject(object1);
+
+		std::shared_ptr<Object> object2 = std::make_shared<Object>();
+		object2->addComponent(std::make_shared<Camera>());
+		object2->addComponent(std::make_shared<Transform>());
+		object2->addComponent(std::make_shared<CameraController>());
+		scene->camera = object2;
+
 	}
 	void onUpdate() override
 	{
@@ -32,5 +53,13 @@ public:
 		{
 			Window::setFullScreen(!Window::isFullscreen());
 		}
+	}
+
+	void onImGuiDraw() override
+	{
+		ImGui::Begin("App");
+		ImGui::Checkbox("Debug ui", &debugGui->enabled);
+		ImGui::Checkbox("OpenGL render", &sceneRenderer->enabled);
+		ImGui::End();
 	}
 };
