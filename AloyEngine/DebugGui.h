@@ -13,6 +13,10 @@ public:
 	{
 		ImGui::Begin(name.c_str());
 	}
+	static void endWindow()
+	{
+		ImGui::End();
+	}
 	static void colorPick(const std::string& label, Vector3& color)
 	{
 		ImGui::PushID(ImGuiSeedGenerator::nextSeed());
@@ -25,8 +29,10 @@ public:
 		ImGui::DragFloat3(label.c_str(), reinterpret_cast<float*>(&vector), speed);
 		ImGui::PopID();
 	}
-	static void endWindow()
+	static void checkBox(const std::string& label, bool& value)
 	{
-		ImGui::End();
+		ImGui::PushID(ImGuiSeedGenerator::nextSeed());
+		ImGui::Checkbox(label.c_str(), &value);
+		ImGui::PopID();
 	}
 };

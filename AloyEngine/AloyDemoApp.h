@@ -76,10 +76,10 @@ public:
 
 	void onImGuiDraw() override
 	{
-		ImGui::Begin("App");
-		ImGui::Checkbox("Debug ui", &debugGui->enabled);
-		ImGui::Checkbox("OpenGL render", &sceneRenderer->enabled);
-		ImGui::End();
+		DebugGui::beginWindow("App");
+		DebugGui::checkBox("Debug ui", debugGui->enabled);
+		DebugGui::checkBox("OpenGL render", sceneRenderer->enabled);
+		DebugGui::endWindow();
 
 		scene->onDebugGuiDraw();
 	}
