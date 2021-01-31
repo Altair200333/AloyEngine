@@ -200,11 +200,14 @@
     <ClInclude Include="Camera.h">
       <Filter>Engine\ECS\Components</Filter>
     </ClInclude>
-    <ClInclude Include="CameraContext.h">
-      <Filter>Engine</Filter>
-    </ClInclude>
     <ClInclude Include="CameraController.h">
       <Filter>Engine\ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="CameraContext.h">
+      <Filter>Engine\RenderLayer\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshLoader.h">
+      <Filter>Engine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -13,25 +13,36 @@
 class MeshRenderer final: public Component
 {
 	Shader lightingShader = Shader(FileUtils::fileContents("shader.vs"), FileUtils::fileContents("shader.fs"));
-	unsigned int VBO, cubeVAO;
+	unsigned int VAO{}, VBO{}, EBO{};
+	std::shared_ptr<Mesh> mesh;
 public:
 	void init()
 	{
-		auto mesh = owner->getComponent<Mesh>();
-		glGenVertexArrays(1, &cubeVAO);
+		mesh = owner->getComponent<Mesh>();
+		glGenVertexArrays(1, &VAO);
 		glGenBuffers(1, &VBO);
+		glGenBuffers(1, &EBO);
 
+		glBindVertexArray(VAO);
 		glBindBuffer(GL_ARRAY_BUFFER, VBO);
-		glBufferData(GL_ARRAY_BUFFER, mesh->data.size()*sizeof(float), mesh->data.data(), GL_STATIC_DRAW);
 
-		glBindVertexArray(cubeVAO);
+		glBufferData(GL_ARRAY_BUFFER, mesh->vertices.size() * sizeof(Mesh::Vertex), mesh->vertices.data(), GL_STATIC_DRAW);
 
-		// position attribute
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, EBO);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh->indices.size() * sizeof(unsigned int),
+			mesh->indices.data(), GL_STATIC_DRAW);
+
+		// vertex positions
 		glEnableVertexAttribArray(0);
-		// normal attribute
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Mesh::Vertex), (void*)0);
+		// vertex normals
 		glEnableVertexAttribArray(1);
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Mesh::Vertex), (void*)offsetof(Mesh::Vertex, Normal));
+		// vertex texture coords
+		glEnableVertexAttribArray(2);
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Mesh::Vertex), (void*)offsetof(Mesh::Vertex, TexCoords));
+
+		glBindVertexArray(0);
 	}
 	void render(const CameraContext& context)
 	{
@@ -47,10 +58,10 @@ public:
 		lightingShader.setMat4("projection", projection);
 		lightingShader.setMat4("view", view);
 
-		glm::mat4 model = glm::mat4(1.0f);
-		lightingShader.setMat4("model", model);
+		lightingShader.setMat4("model", context.transform->transform);
 
-		glBindVertexArray(cubeVAO);
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		glBindVertexArray(VAO);
+		glDrawElements(GL_TRIANGLES, mesh->indices.size(), GL_UNSIGNED_INT, 0);
+		glBindVertexArray(0);
 	}
 };

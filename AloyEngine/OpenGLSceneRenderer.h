@@ -18,10 +18,13 @@ public:
 	{
 		glEnable(GL_DEPTH_TEST);
 	}
-	void onEnd() override{}
+	void onEnd() override
+	{
+		glDisable(GL_DEPTH_TEST);
+	}
 	void onDraw() override
 	{
-		CameraContext context{associatedScene->camera->getComponent<Camera>(), associatedScene->camera->getComponent<Transform>()};
+		const CameraContext context{associatedScene->camera->getComponent<Camera>(), associatedScene->camera->getComponent<Transform>()};
 		for(auto& object: associatedScene->objects)
 		{
 			auto meshRenderer = object->getComponent<MeshRenderer>();

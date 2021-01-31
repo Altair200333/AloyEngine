@@ -1,6 +1,7 @@
 #pragma once
 #include "Application.h"
 #include "CameraController.h"
+#include "MeshLoader.h"
 #include "OpenGLSceneRenderer.h"
 #include "Scene.h"
 
@@ -29,7 +30,16 @@ public:
 		object2->addComponent(std::make_shared<Transform>());
 		object2->addComponent(std::make_shared<CameraController>());
 		scene->camera = object2;
-
+		
+		auto r = MeshLoader().loadModel("E:\\work\\blender\\suz1.fbx");
+		for(auto& mesh: r)
+		{
+			std::shared_ptr<Object> object3 = std::make_shared<Object>();
+			object3->addComponent(mesh);
+			object3->addComponent(std::make_shared<MeshRenderer>());
+			object3->getComponent<MeshRenderer>()->init();
+			scene->addObject(object3);
+		}
 	}
 	void onUpdate() override
 	{
