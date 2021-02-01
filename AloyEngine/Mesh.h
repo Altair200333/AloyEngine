@@ -8,12 +8,8 @@
 class Mesh final: public Component
 {
 public:
-  
-    
 	std::vector<Vertex> vertices;
     std::vector<unsigned int> indices;
-
-	/*vertices + normals*/
 	
     Mesh() = default;
     Mesh(std::vector<Vertex> vertices, std::vector<unsigned int> indices)

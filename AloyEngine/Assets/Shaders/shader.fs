@@ -35,11 +35,16 @@ vec3 getAlbedo()
     else
         return objectColor;
 }
+vec3 getNormal()
+{
+    vec3 norm = normalize(Normal);
 
+    return norm;
+}
 void main()
 {
     vec3 viewDir = normalize(viewPos - FragPos);
-    vec3 norm = normalize(Normal);
+    vec3 norm = getNormal();
     vec3 result = vec3(0);
     for(int i =0; i<pointLightCount; ++i)
     {

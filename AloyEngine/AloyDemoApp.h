@@ -48,7 +48,6 @@ public:
 		}
 		
 		scene->addLight(createPointLight({ 1,-1.2,1.1 }));
-		scene->addLight(createPointLight({ -1,-1.2,1.1 }));
 	}
 	void onUpdate() override
 	{

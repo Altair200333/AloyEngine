@@ -15,7 +15,7 @@
 
 class MeshRenderer final: public Component
 {
-	Shader shader = Shader(FileUtils::fileContents("shader.vs"), FileUtils::fileContents("shader.fs"));
+	Shader shader = Shader(FileUtils::fileContents("Assets\\Shaders\\shader.vs"), FileUtils::fileContents("Assets\\Shaders\\shader.fs"));
 	unsigned int VAO{}, VBO{}, EBO{};
 	std::shared_ptr<Mesh> mesh;
 	std::shared_ptr<Material> material;
@@ -50,6 +50,12 @@ public:
 		// vertex texture coords
 		glEnableVertexAttribArray(2);
 		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, TexCoords)));
+		// vertex tangent
+		glEnableVertexAttribArray(3);
+		glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, Tangent)));
+		// vertex bitangent
+		glEnableVertexAttribArray(4);
+		glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, Bitangent)));
 	}
 
 	void init()
