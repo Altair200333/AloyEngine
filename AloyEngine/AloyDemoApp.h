@@ -36,7 +36,7 @@ public:
 
 		scene->camera = createCamera();
 		
-		auto models = MeshLoader().loadModel("E:\\work\\blender\\suz1.fbx");
+		auto models = MeshLoader().loadModel("Assets\\Models\\sam.obj");
 		for(auto& model: models)
 		{
 			std::shared_ptr<Object> object = std::make_shared<Object>();

@@ -4,6 +4,7 @@ out vec4 FragColor;
 in vec3 Normal;  
 in vec3 FragPos;  
 in vec2 TexCoords;
+in mat3 TBN;
 
 uniform vec3 viewPos; 
 
@@ -22,10 +23,10 @@ uniform vec3 objectColor;
 uniform int albedoCount;
 uniform sampler2D texture_diffuse[2];
 
-uniform bool specularCount;
+uniform int specularCount;
 uniform sampler2D texture_specular[2];
 
-uniform bool normalCount;
+uniform int normalCount;
 uniform sampler2D texture_normal[2];
 
 vec3 getAlbedo()
@@ -37,9 +38,13 @@ vec3 getAlbedo()
 }
 vec3 getNormal()
 {
-    vec3 norm = normalize(Normal);
+    if(normalCount == 0)
+        return normalize(Normal);
 
-    return norm;
+    vec3 normal_rgb = texture(texture_normal[0], TexCoords).rgb; 
+    normal_rgb = normalize(normal_rgb * 2.0 - 1.0); 
+    normal_rgb = normalize(TBN * normal_rgb); 
+    return normal_rgb; 
 }
 void main()
 {
