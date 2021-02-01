@@ -5,7 +5,11 @@
 #include <fstream>
 #include <sstream>
 
-class Logger final
+
+#include "DebugGui.h"
+#include "ImGuiEventSubscriber.h"
+
+class Logger final: public ImGuiEventSubscriber
 {
 	inline static std::string loggerFileName = "log.txt";
 	std::ofstream stream;
@@ -53,5 +57,12 @@ public:
 			out << msg << "\n";
 		}
 		return out.str();
+	}	
+
+	void onImGuiDraw() override
+	{
+		DebugGui::beginWindow("Logs");
+		DebugGui::text(getLatestLogs());
+		DebugGui::endWindow();
 	}
 };

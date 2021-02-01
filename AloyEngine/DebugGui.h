@@ -29,6 +29,12 @@ public:
 		ImGui::DragFloat3(label.c_str(), reinterpret_cast<float*>(&vector), speed);
 		ImGui::PopID();
 	}
+	static void text(const std::string& text)
+	{
+		ImGui::PushID(ImGuiSeedGenerator::nextSeed());
+		ImGui::Text(text.c_str());
+		ImGui::PopID();
+	}
 	static void checkBox(const std::string& label, bool& value)
 	{
 		ImGui::PushID(ImGuiSeedGenerator::nextSeed());

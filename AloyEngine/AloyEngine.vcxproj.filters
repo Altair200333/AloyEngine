@@ -94,7 +94,6 @@
     <ClInclude Include="WindowProps.h">
       <Filter>Engine\Window</Filter>
     </ClInclude>
-    <ClInclude Include="Logger.h" />
     <ClInclude Include="Event.h">
       <Filter>Engine\EventSystem\Events</Filter>
     </ClInclude>
@@ -253,6 +252,9 @@
     </ClInclude>
     <ClInclude Include="DebugGui.h">
       <Filter>Engine\RenderLayer\Layers\DebugImGui</Filter>
+    </ClInclude>
+    <ClInclude Include="Logger.h">
+      <Filter>Engine</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

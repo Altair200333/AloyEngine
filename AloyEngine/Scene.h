@@ -27,13 +27,9 @@ public:
 
 		for(int i=0; i < objects.size(); ++i)
 		{
-			auto material = objects[i]->getComponent<Material>();
-			if(material)
+			if (ImGui::CollapsingHeader(("Object" + std::to_string(i)).c_str()))
 			{
-				if(ImGui::CollapsingHeader(("Object" + std::to_string(i)).c_str()))
-				{
-					DebugGui::colorPick("Albedo", material->albedoColor);
-				}
+				objects[i]->getComponent<Material>()->onDebugGuiDraw();
 			}
 		}
 		for (int i = 0; i < lights.size(); ++i)
