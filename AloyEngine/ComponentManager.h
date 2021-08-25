@@ -28,4 +28,14 @@ public:
 			return {};
 		return std::dynamic_pointer_cast<T>(it->second);
 	}
+
+	auto begin()
+	{
+		return components.begin();
+	}
+	
+	auto end()
+	{
+		return components.end();
+	}
 };

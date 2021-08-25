@@ -1,18 +1,8 @@
-# Blender MTL File: 'sampel.blend'
-# Material Count: 5
+# Blender MTL File: 'None'
+# Material Count: 1
 
-newmtl Material.001
-Ns 225.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.002224 0.019604 0.800000
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-
-newmtl Material.002
-Ns 225.000000
+newmtl Material
+Ns 323.999994
 Ka 1.000000 1.000000 1.000000
 Kd 0.800000 0.800000 0.800000
 Ks 0.500000 0.500000 0.500000
@@ -20,38 +10,3 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2
-map_Kd E:\\download\\2CbCSbOY_H8.jpg
-
-newmtl Material.003
-Ns 0.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.047994 0.800000 0.062404
-Ks 0.577273 0.577273 0.577273
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-map_Bump E:\\download\\square_floor_nor_2k.jpg
-map_Kd E:\\download\\square_floor_diff_2k.jpg
-
-newmtl Material.004
-Ns 225.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.109729 0.800000 0.180325
-Ks 0.500000 0.500000 0.500000
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-
-newmtl Material.005
-Ns 0.000000
-Ka 1.000000 1.000000 1.000000
-Kd 0.047994 0.800000 0.062404
-Ks 0.577273 0.577273 0.577273
-Ke 0.000000 0.000000 0.000000
-Ni 1.450000
-d 1.000000
-illum 2
-map_Bump E:\\download\\large_grey_tiles_nor_2k.jpg
-map_Kd E:\\download\\large_grey_tiles_diff_2k.jpg

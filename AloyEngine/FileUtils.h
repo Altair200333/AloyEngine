@@ -21,11 +21,11 @@ namespace FileUtils
 		return {};
 	}
 
-	inline std::string fileContents(const std::string& path)
+	inline std::optional<std::string> fileContents(const std::string& path)
 	{
 		std::ifstream file(path);
 		if (!file)
-			return "";
+			return std::nullopt;
 		return std::string((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
 	}
 	inline std::string fileExtension(const std::string& path)

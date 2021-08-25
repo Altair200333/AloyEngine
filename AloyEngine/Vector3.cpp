@@ -37,12 +37,12 @@ Vector3 Vector3::operator*(float val) const
 
 float& Vector3::operator[](size_t idx)
 {
-	return v[idx];
+	return vertex[idx];
 }
 
 const float& Vector3::operator[](size_t idx) const
 {
-	return v[idx];
+	return vertex[idx];
 }
 
 Vector3& Vector3::operator+=(const Vector3& other)

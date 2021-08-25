@@ -21,15 +21,24 @@ public:
 	{
 		lights.push_back(std::move(object));
 	}
+	
 	void onDebugGuiDraw() override
 	{
 		DebugGui::beginWindow("Scene");
 
 		for(int i=0; i < objects.size(); ++i)
 		{
+			auto& object = objects[i];
 			if (ImGui::CollapsingHeader(("Object" + std::to_string(i)).c_str()))
 			{
-				objects[i]->getComponent<Material>()->onDebugGuiDraw();
+				for(auto iterator = object->componentsBegin(), end = object->componentsEnd(); iterator != end; ++iterator)
+				{
+					if(auto drawable = std::dynamic_pointer_cast<DebugGuiDrawable>(iterator->second); drawable != nullptr)
+					{
+						drawable->onDebugGuiDraw();
+					}
+					
+				}
 			}
 		}
 		for (int i = 0; i < lights.size(); ++i)

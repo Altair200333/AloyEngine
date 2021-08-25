@@ -1,6 +1,7 @@
 #pragma once
 #include <array>
 #include <glm/vec3.hpp>
+#include <glm/vec4.hpp>
 
 class Vector3 final
 {
@@ -11,7 +12,7 @@ public:
         {
             float x, y, z;
         };
-        std::array<float, 3> v;
+        std::array<float, 3> vertex;
     };
 
     Vector3();
@@ -50,5 +51,21 @@ public:
     [[nodiscard]] glm::vec3 toGlm() const
     {
         return { x, y, z };
+    }
+	
+    //some *not very dark* magic to directly cast this dude
+    [[nodiscard]] glm::vec3& vec3() const
+    {
+       return *reinterpret_cast<glm::vec3*>(const_cast<Vector3*>(this));
+    }
+    [[nodiscard]] glm::vec4 vec4() const
+    {
+        return {x, y, z, 1.0};
+    }
+	void fromGLM(const glm::vec3& vector)
+    {
+        x = vector.x;
+        y = vector.y;
+        z = vector.z;
     }
 };

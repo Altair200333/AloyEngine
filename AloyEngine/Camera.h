@@ -20,7 +20,7 @@ public:
 
 	float fov;
 
-	explicit Camera(Vector3 _front = {0, 1, 0}, Vector3 _right = {1, 0, 0}, Vector3 _up = {0, 0, 1},
+	explicit Camera(Vector3 _front = {0, 0, 1}, Vector3 _right = {1, 0, 0}, Vector3 _up = {0, 1, 0},
 	                float _fov = 60): front(_front), right(_right), up(_up), fov(_fov)
 	{
 	}
@@ -29,11 +29,11 @@ public:
 	{
 		glm::vec3 forward;
 		forward.x = cos(glm::radians(yaw)) * cos(glm::radians(pitch));
-		forward.z = sin(glm::radians(pitch));
-		forward.y = -sin(glm::radians(yaw)) * cos(glm::radians(pitch));
+		forward.y = sin(glm::radians(pitch));
+		forward.z = sin(glm::radians(yaw)) * cos(glm::radians(pitch));
 		front = glm::normalize(forward);
 
-		right = glm::normalize(glm::cross(forward, { 0, 0, 1 }));
+		right = glm::normalize(glm::cross(forward, { 0, 1, 0 }));
 		up = glm::normalize(glm::cross(right.toGlm(), front.toGlm()));
 	}
 	// returns the view matrix calculated using Euler Angles and the LookAt Matrix

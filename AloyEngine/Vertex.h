@@ -3,11 +3,11 @@
 #include <glm/vec3.hpp>
 
 struct Vertex final {
-    glm::vec3 Position;
-    glm::vec3 Normal;
-    glm::vec2 TexCoords;
+    glm::vec3 position;
+    glm::vec3 normal;
+    glm::vec2 texCoords;
     // tangent
-    glm::vec3 Tangent;
+    glm::vec3 tangent;
     // bitangent
-    glm::vec3 Bitangent;
+    glm::vec3 bitangent;
 };

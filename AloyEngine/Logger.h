@@ -21,7 +21,7 @@ class Logger final: public ImGuiEventSubscriber
 	{
 		mtx.lock();
 
-		if (logs.size() > 20)
+		if (logs.size() > logStackSize)
 			logs.pop_front();
 		logs.push_back(msg);
 
@@ -29,10 +29,12 @@ class Logger final: public ImGuiEventSubscriber
 			stream << msg << "\n";
 		mtx.unlock();
 	}
+	
 	Logger() : stream(std::ofstream(loggerFileName, std::ios::app))
 	{
 	}
 public:
+	inline static uint32_t logStackSize = 30;
 	static Logger& instance()
 	{
 		static Logger instance{};

@@ -37,12 +37,14 @@ public:
 		scene->camera = createCamera();
 		
 		auto models = MeshLoader().loadModel("Assets\\Models\\sam.obj");
+		
 		for(auto& model: models)
 		{
 			std::shared_ptr<Object> object = std::make_shared<Object>();
 			object->addComponent(model.mesh);
 			object->addComponent(model.material);
 			object->addComponent(std::make_shared<MeshRenderer>());
+			object->addComponent(std::make_shared<Transform>());
 			object->getComponent<MeshRenderer>()->init();
 			scene->addObject(object);
 		}

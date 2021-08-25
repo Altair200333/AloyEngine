@@ -15,7 +15,10 @@
 
 class MeshRenderer final: public Component
 {
-	Shader shader = Shader(FileUtils::fileContents("Assets\\Shaders\\shader.vs"), FileUtils::fileContents("Assets\\Shaders\\shader.fs"));
+	std::optional<std::string> vertexShader = FileUtils::fileContents("Assets\\Shaders\\shader.vs");
+	std::optional<std::string> fragmentShader = FileUtils::fileContents("Assets\\Shaders\\shader.fs");
+	
+	Shader shader = Shader(vertexShader.value(), fragmentShader.value());
 	unsigned int VAO{}, VBO{}, EBO{};
 	std::shared_ptr<Mesh> mesh;
 	std::shared_ptr<Material> material;
@@ -46,16 +49,16 @@ public:
 		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), nullptr);
 		// vertex normals
 		glEnableVertexAttribArray(1);
-		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, Normal)));
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, normal)));
 		// vertex texture coords
 		glEnableVertexAttribArray(2);
-		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, TexCoords)));
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, texCoords)));
 		// vertex tangent
 		glEnableVertexAttribArray(3);
-		glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, Tangent)));
+		glVertexAttribPointer(3, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, tangent)));
 		// vertex bitangent
 		glEnableVertexAttribArray(4);
-		glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, Bitangent)));
+		glVertexAttribPointer(4, 3, GL_FLOAT, GL_FALSE, sizeof(Vertex), reinterpret_cast<void*>(offsetof(Vertex, bitangent)));
 	}
 
 	void init()
@@ -74,10 +77,10 @@ public:
 	{
 		shader.use();
 
-		
 		shader.setVec3("lightColor", 1.0f, 1.0f, 1.0f);
 		shader.setVec3("lightPos", Vector3{1,-1.2,1.1});
-		
+		shader.setMat4("model", owner->getComponent<Transform>()->transform);
+
 		OpenGlUploader<CameraContext>::upload(context.cameraContext, shader);
 		OpenGlUploader<Material>::upload(material, shader);
 		OpenGlUploader<PointLight>::upload(context.lights, shader);

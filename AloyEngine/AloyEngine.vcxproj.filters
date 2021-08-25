@@ -50,11 +50,14 @@
     <Filter Include="Vendor\stb_image">
       <UniqueIdentifier>{a8dd16f7-5a4f-424a-9961-e620b553f197}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Engine\OpenGL">
-      <UniqueIdentifier>{5685e222-a9dc-4ff4-8a67-0fc44b82fc03}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Engine\RenderLayer\Layers\DebugImGui">
       <UniqueIdentifier>{695a92dd-6e4d-444e-b6eb-db8f2b447216}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Renderer">
+      <UniqueIdentifier>{bad88519-fd90-4b54-a8be-f888cab7e876}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Engine\Renderer\OpenGL">
+      <UniqueIdentifier>{5685e222-a9dc-4ff4-8a67-0fc44b82fc03}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -218,16 +221,16 @@
       <Filter>Engine\ECS\Components</Filter>
     </ClInclude>
     <ClInclude Include="Shader.h">
-      <Filter>Engine\OpenGL</Filter>
+      <Filter>Engine\Renderer\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="Texture.h">
-      <Filter>Engine\OpenGL</Filter>
+      <Filter>Engine\Renderer\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="Vertex.h">
-      <Filter>Engine\OpenGL</Filter>
+      <Filter>Engine\Renderer\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="OpenGLUploader.h">
-      <Filter>Engine\OpenGL</Filter>
+      <Filter>Engine\Renderer\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="Profiler.h">
       <Filter>Engine</Filter>
@@ -236,10 +239,10 @@
       <Filter>Engine\ECS\Components</Filter>
     </ClInclude>
     <ClInclude Include="CameraContext.h">
-      <Filter>Engine\OpenGL</Filter>
+      <Filter>Engine\Renderer\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="RenderContext.h">
-      <Filter>Engine\OpenGL</Filter>
+      <Filter>Engine\Renderer\OpenGL</Filter>
     </ClInclude>
     <ClInclude Include="ImGuiLayer.h">
       <Filter>Engine\RenderLayer\Layers\DebugImGui</Filter>
