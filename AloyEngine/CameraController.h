@@ -51,7 +51,7 @@ inline void CameraController::onUpdate()
 		if (Input::getKeyPressed(key))
 		{
 			hasMoved = true;
-			transform->position += (camera->front * direction.z + camera->right * direction.x + camera->up * direction.y) * speed * Profiler::currentFrameTime();
+			transform->position += (camera->front * direction.z + camera->right * direction.x + camera->up * direction.y)* speed* Profiler::currentFrameTime();
 		}
 	}
 
