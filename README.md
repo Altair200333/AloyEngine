@@ -15,4 +15,4 @@ Implememting new event boils down to creating *YourEventSubscriber: public Event
 
 <hr>
  
-This project is a compilation of design solution I came up with after severla educational projects
+This project is a compilation of design solution I came up with after several educational projects
